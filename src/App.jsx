@@ -22,7 +22,7 @@ const PI = 3;
 const APP_VERSION = "v11.0 - RANKED E-SPORTS EDITION";
 
 // --- RECURSOS MODERNOS ---
-const BG_LOBBY = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000"; 
+const BG_LOBBY = "https://images.unsplash.com/photo-1506443432602-ac2fcd6f54e0?auto=format&fit=crop&q=80&w=1000"; 
 const BG_STADIUM = "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1000"; 
 const BG_FOREST = "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?auto=format&fit=crop&q=80&w=1000"; 
 const BG_CASTLE = "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?auto=format&fit=crop&q=80&w=1000"; 
@@ -607,29 +607,77 @@ function MarvelMathGame() {
   // --- VISTAS MENÚ ---
   if (gameState === 'START') {
     return (
-      <div className="min-h-screen bg-slate-950 bg-cover bg-center flex items-center justify-center p-4 relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.8), rgba(15,23,42,0.95)), url(${BG_LOBBY})`, fontFamily: "'Rajdhani', sans-serif" }}>
-        {/* Etiqueta HTML pura para la música (mucho más fiable) */}
+      <div className="min-h-screen bg-slate-950 bg-cover bg-center flex items-center justify-center p-4 relative overflow-hidden" style={{ backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.7), rgba(15,23,42,0.95)), url(${BG_LOBBY})`, fontFamily: "'Rajdhani', sans-serif" }}>
+        
+        {/* Efecto de cuadrícula tecnológica de fondo */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-900/10 to-transparent animate-pulse pointer-events-none"></div>
+
+        {/* Etiqueta HTML pura para la música */}
         <audio ref={bgMusicRef} src="https://cdn.pixabay.com/audio/2022/10/25/audio_51a24d35c2.mp3" loop preload="auto"></audio>
         
         <MusicToggle />
-        <div className="max-w-lg w-full bg-slate-900/60 backdrop-blur-xl border border-cyan-500/30 p-8 sm:p-10 text-center shadow-[0_0_50px_rgba(6,182,212,0.15)] rounded-2xl relative">
-          <div className="absolute top-3 right-5 text-xs font-bold text-cyan-500/50 uppercase tracking-widest">{APP_VERSION}</div>
+        
+        <div className="max-w-xl w-full relative z-10 animate-in fade-in zoom-in duration-700">
           
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 uppercase tracking-widest drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] mt-4 leading-none pb-2">
-            POKENGERS<br/><span className="text-3xl sm:text-5xl text-white block mt-2">GEOMETRY FIGHT</span>
-          </h1>
-          
-          <div className="mb-8 mt-6 text-[10px] sm:text-xs text-slate-400 tracking-widest uppercase border-b border-white/10 pb-4">
-            Diseñado y desarrollado por <span className="text-cyan-300 font-bold">Jose Manuel Santos</span>
-          </div>
+          {/* Esquinas tecnológicas brillantes */}
+          <div className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-cyan-400 shadow-[0_0_15px_#22d3ee] rounded-tl-lg z-20 pointer-events-none"></div>
+          <div className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-cyan-400 shadow-[0_0_15px_#22d3ee] rounded-tr-lg z-20 pointer-events-none"></div>
+          <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-purple-500 shadow-[0_0_15px_#a855f7] rounded-bl-lg z-20 pointer-events-none"></div>
+          <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-purple-500 shadow-[0_0_15px_#a855f7] rounded-br-lg z-20 pointer-events-none"></div>
 
-          {highScore > 0 && <div className="mb-8 text-sm font-bold text-yellow-300 bg-yellow-500/10 py-3 rounded-lg border border-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.2)] animate-pulse tracking-widest">🏆 HIGH SCORE: {highScore} DMG</div>}
-          
-          <p className="mb-10 text-slate-300 text-base sm:text-lg leading-relaxed bg-black/40 p-5 rounded-xl border border-white/5">
-            Calcula áreas y volúmenes de cabeza <strong className="text-cyan-400">(Usa π=3)</strong>. Curarse requerirá saberse la teoría pura.
-          </p>
-          <button onClick={startHeroSelection} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-5 rounded-xl uppercase tracking-[0.2em] transition-all text-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] active:scale-95">INICIAR ENLACE</button>
+          <div className="bg-slate-900/80 backdrop-blur-2xl border border-cyan-500/30 p-8 sm:p-12 text-center shadow-[0_0_80px_rgba(6,182,212,0.15)] rounded-2xl relative overflow-hidden">
+            
+            {/* Etiquetas de sistema */}
+            <div className="absolute top-3 left-5 text-xs font-bold text-cyan-500/40 uppercase tracking-widest flex items-center gap-2"><span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> SYS.ON</div>
+            <div className="absolute top-3 right-5 text-xs font-bold text-cyan-500/40 uppercase tracking-widest">{APP_VERSION}</div>
+            
+            {/* Título Principal 3D */}
+            <div className="relative inline-block mb-2 mt-6">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 via-blue-500 to-purple-600 uppercase tracking-tighter drop-shadow-[0_0_20px_rgba(6,182,212,0.4)] leading-none transform -skew-x-6">
+                POKENGERS
+              </h1>
+              {/* Brillo detrás de Pokengers */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-purple-600 blur-2xl opacity-20 z-[-1]"></div>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-bold mb-8 text-white uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+              GEOMETRY <span className="text-cyan-400">FIGHT</span>
+            </h2>
+            
+            {/* Caja de Récord */}
+            {highScore > 0 ? (
+               <div className="mx-auto max-w-[280px] mb-10 flex items-center justify-center gap-3 text-sm sm:text-base font-black text-yellow-300 bg-gradient-to-r from-yellow-600/10 via-yellow-500/20 to-yellow-600/10 py-3 px-6 rounded-full border border-yellow-500/40 shadow-[0_0_25px_rgba(234,179,8,0.2)] animate-pulse tracking-widest">
+                  <span className="text-xl">🏆</span> Rango Máx: {highScore} DMG
+               </div>
+            ) : (
+               <div className="h-10 mb-8"></div>
+            )}
+            
+            {/* Tarjeta de Instrucciones */}
+            <div className="mb-10 text-slate-300 text-sm sm:text-base leading-relaxed bg-black/60 p-6 rounded-xl border border-cyan-900/50 shadow-inner relative group text-left sm:text-center">
+              <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-500 shadow-[0_0_10px_#22d3ee] rounded-l-xl"></div>
+              <p>Calcula áreas y volúmenes mentalmente <strong className="text-cyan-400 text-lg ml-1 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]">(Usa π = 3)</strong>.</p>
+              <p className="mt-3 text-slate-400 font-medium">El <span className="text-emerald-400 font-bold tracking-wider">Cortafuegos de Curación</span> evaluará tu teoría pura.</p>
+            </div>
+            
+            {/* Botón Jugar Moderno */}
+            <button onClick={startHeroSelection} className="relative group w-full">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-xl blur-md opacity-60 group-hover:opacity-100 transition duration-300"></div>
+              <div className="relative w-full bg-slate-950 border border-cyan-500/50 group-hover:bg-slate-900 text-white font-black py-5 rounded-xl uppercase tracking-[0.3em] transition-all text-xl sm:text-2xl flex items-center justify-center gap-3 overflow-hidden">
+                 <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></div>
+                 <span className="text-cyan-400 group-hover:text-white transition-colors drop-shadow-[0_0_8px_currentColor]">INICIAR ENLACE</span>
+                 <span className="text-xl">▶</span>
+              </div>
+            </button>
+          </div>
         </div>
+
+        {/* Firma del Creador Flotante */}
+        <div className="absolute bottom-6 text-[10px] sm:text-sm text-slate-400 tracking-[0.2em] uppercase font-medium">
+          Diseñado y desarrollado por <span className="text-cyan-300 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] ml-1">Jose Manuel Santos</span>
+        </div>
+
       </div>
     );
   }
@@ -849,7 +897,19 @@ function MarvelMathGame() {
 
 export default function App() {
   const [ready, setReady] = useState(false);
+  
   useEffect(() => {
+    // --- CAMBIAR TÍTULO DE LA PESTAÑA Y FAVICON ---
+    document.title = "JmSPokengers";
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.href = 'https://i.ibb.co/Ndt35H2Z/SHIELD-CSB.png';
+
+    // --- CHEQUEO DE ESTILOS ---
     const checkStyles = setInterval(() => { if (window.tailwind) { setReady(true); clearInterval(checkStyles); } }, 100);
     return () => clearInterval(checkStyles);
   }, []);
