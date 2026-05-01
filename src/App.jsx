@@ -726,20 +726,20 @@ function MarvelMathGame() {
         </div>
       )}
 
-      {/* CONTENEDOR PRINCIPAL CON FLEXBOX RESPONSIVO */}
-      <div className="w-full max-w-5xl bg-slate-900 sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col h-[100dvh] sm:h-[85vh] relative border border-white/10">
+      {/* CONTENEDOR PRINCIPAL CON FLEXBOX LÍQUIDO */}
+      <div className="w-full max-w-5xl bg-slate-900 sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col h-[100dvh] sm:h-[90vh] max-h-[900px] relative border border-white/10">
         
-        {/* ESCENARIO DE BATALLA REFACTORIZADO CON FLEX */}
-        <div className={`flex-[1.2] sm:flex-[1.5] relative bg-slate-950 ${flashEnemy ? 'bg-red-900/50' : ''} ${flashPlayer ? 'bg-rose-900/50' : ''} transition-colors duration-300 flex flex-col justify-between py-4 px-3 sm:p-8 z-10`}>
+        {/* ESCENARIO DE BATALLA */}
+        <div className={`flex-[1.3] sm:flex-[1.4] min-h-0 w-full relative bg-slate-950 ${flashEnemy ? 'bg-red-900/50' : ''} ${flashPlayer ? 'bg-rose-900/50' : ''} transition-colors duration-300 flex flex-col justify-between py-4 px-3 sm:p-6 z-10`}>
           
           {currentEnemy?.bg && <><div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-screen pointer-events-none" style={{ backgroundImage: `url(${currentEnemy.bg})` }}></div><div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-transparent to-slate-950 pointer-events-none"></div></>}
 
           {/* FILA SUPERIOR: ENEMIGO */}
           <div className="flex justify-between items-start z-20 w-full relative gap-2">
-             <div className="flex-1 max-w-[200px] sm:max-w-sm bg-black/60 backdrop-blur-md p-2 sm:p-5 rounded-2xl border border-rose-500/30 shadow-[0_0_20px_rgba(225,29,72,0.2)]">
-                <div className="flex justify-between items-baseline mb-1 sm:mb-3">
-                   <h2 className="font-black text-xs sm:text-2xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] truncate pr-1">{currentEnemy?.name}</h2>
-                   <span className="text-[9px] sm:text-base font-bold text-rose-400 bg-rose-500/10 px-1 sm:px-2 py-0.5 rounded">Lv{currentEnemy?.level}</span>
+             <div className="flex-1 max-w-[200px] sm:max-w-xs bg-black/60 backdrop-blur-md p-2 sm:p-4 rounded-2xl border border-rose-500/30 shadow-[0_0_20px_rgba(225,29,72,0.2)]">
+                <div className="flex justify-between items-baseline mb-1 sm:mb-2">
+                   <h2 className="font-black text-[11px] sm:text-xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] truncate pr-1">{currentEnemy?.name}</h2>
+                   <span className="text-[9px] sm:text-sm font-bold text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">Lv{currentEnemy?.level}</span>
                 </div>
                 <CyberHealthBar current={currentEnemy?.hp} max={currentEnemy?.maxHp} label="INTEGRIDAD" isEnemy={true} />
              </div>
@@ -755,14 +755,14 @@ function MarvelMathGame() {
                 <SlantedAvatar isEnemy={false} src={selectedHero?.img} alt={selectedHero?.name} fallback={selectedHero?.fallback} />
              </div>
 
-             <div className="flex-1 max-w-[200px] sm:max-w-sm bg-black/60 backdrop-blur-md p-2 sm:p-5 rounded-2xl border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.2)] relative z-20">
-                <div className="flex justify-between items-baseline mb-1 sm:mb-3">
-                   <h2 className="font-black text-xs sm:text-2xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] truncate pr-1">{selectedHero?.name}</h2>
-                   <span className="text-[9px] sm:text-base font-bold text-cyan-400 bg-cyan-500/10 px-1 sm:px-2 py-0.5 rounded">Lv{heroLevel}</span>
+             <div className="flex-1 max-w-[200px] sm:max-w-xs bg-black/60 backdrop-blur-md p-2 sm:p-4 rounded-2xl border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.2)] relative z-20">
+                <div className="flex justify-between items-baseline mb-1 sm:mb-2">
+                   <h2 className="font-black text-[11px] sm:text-xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] truncate pr-1">{selectedHero?.name}</h2>
+                   <span className="text-[9px] sm:text-sm font-bold text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded">Lv{heroLevel}</span>
                 </div>
                 <CyberHealthBar current={playerHp} max={maxPlayerHp} label="ESCUDOS" isEnemy={false} />
-                <div className="mt-1 sm:mt-3">
-                  <div className="flex justify-between items-end mb-1"><span className="text-[8px] sm:text-xs font-bold uppercase tracking-widest text-yellow-400">ENERGÍA Z</span><span className="text-[9px] sm:text-xs font-bold text-white">{energy}%</span></div>
+                <div className="mt-1 sm:mt-2">
+                  <div className="flex justify-between items-end mb-1"><span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-yellow-400">ENERGÍA Z</span><span className="text-[9px] sm:text-xs font-bold text-white">{energy}%</span></div>
                   <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/10"><div className="h-full bg-gradient-to-r from-yellow-500 to-amber-300 shadow-[0_0_10px_currentColor] transition-all duration-300" style={{ width: `${energy}%` }} /></div>
                 </div>
              </div>
@@ -770,68 +770,70 @@ function MarvelMathGame() {
         </div>
 
         {/* UI INFERIOR (Controles y Diálogo) */}
-        <div className="flex-1 min-h-[250px] sm:min-h-[300px] bg-slate-900 border-t border-white/10 p-2 sm:p-6 flex flex-col relative z-20">
+        <div className="flex-1 min-h-0 w-full bg-slate-900 border-t border-white/10 p-2 sm:p-4 flex flex-col relative z-20">
           {question ? (
-             <div className={`h-full backdrop-blur rounded-2xl p-3 sm:p-6 flex flex-col animate-in slide-in-from-bottom-4 border ${qContextColors[question.context]}`}>
-                <div className="flex justify-between items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
-                   <div className={`bg-black/60 border p-2 sm:p-4 text-xs sm:text-2xl font-bold text-center flex-1 rounded-xl tracking-wide ${question.context === 'HEAL' ? 'border-green-500/50 text-green-300' : question.context === 'ULTIMATE' ? 'border-yellow-500/50 text-yellow-300' : 'border-white/10 text-white'}`}>
+             <div className={`h-full w-full backdrop-blur rounded-2xl p-2 sm:p-4 flex flex-col animate-in slide-in-from-bottom-4 border ${qContextColors[question.context]} min-h-0 overflow-y-auto`}>
+                <div className="flex justify-between items-center gap-2 sm:gap-4 mb-2 sm:mb-3 shrink-0">
+                   <div className={`bg-black/60 border p-2 sm:p-3 text-xs sm:text-xl font-bold text-center flex-1 rounded-xl tracking-wide ${question.context === 'HEAL' ? 'border-green-500/50 text-green-300' : question.context === 'ULTIMATE' ? 'border-yellow-500/50 text-yellow-300' : 'border-white/10 text-white'}`}>
                      {question.text}
                    </div>
                    {question.options.length > 2 && (
-                       <button onClick={handleJoker5050} disabled={energy < 50} className="w-14 sm:w-28 shrink-0 bg-blue-600/20 hover:bg-blue-600/40 disabled:bg-slate-800 disabled:opacity-50 border border-blue-400/50 disabled:border-slate-700 rounded-xl font-bold text-blue-300 flex flex-col items-center justify-center p-1 sm:p-2 transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                         <span className="text-xs sm:text-xl">50/50</span><span className="text-[7px] sm:text-xs opacity-80 uppercase tracking-widest">-50 EN</span>
+                       <button onClick={handleJoker5050} disabled={energy < 50} className="w-14 sm:w-20 shrink-0 bg-blue-600/20 hover:bg-blue-600/40 disabled:bg-slate-800 disabled:opacity-50 border border-blue-400/50 disabled:border-slate-700 rounded-xl font-bold text-blue-300 flex flex-col items-center justify-center p-1 sm:p-2 transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                         <span className="text-xs sm:text-lg">50/50</span><span className="text-[7px] sm:text-[10px] opacity-80 uppercase tracking-widest">-50 EN</span>
                        </button>
                    )}
                 </div>
                 
-                <div className="w-full h-1.5 sm:h-2 bg-slate-900 mb-3 sm:mb-5 rounded-full overflow-hidden relative border border-white/5">
+                <div className="w-full h-1.5 sm:h-2 bg-slate-900 mb-2 sm:mb-3 rounded-full overflow-hidden relative border border-white/5 shrink-0">
                   <div className={`absolute left-0 top-0 h-full ${timeLeft > 20 ? 'bg-cyan-400 shadow-[0_0_10px_#22d3ee]' : 'bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]'}`} style={{ width: `${timeLeft}%` }} />
                 </div>
 
-                <div className={`grid gap-2 sm:gap-4 flex-1 ${question.options.length === 2 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+                <div className={`grid gap-1.5 sm:gap-3 flex-1 min-h-0 ${question.options.length === 2 ? 'grid-cols-1' : 'grid-cols-2'}`}>
                   {question.options.map((opt, idx) => (
-                    <button key={idx} onClick={() => handleAnswer(opt)} className="bg-slate-800/80 hover:bg-cyan-600/40 border border-slate-600 hover:border-cyan-400 font-bold text-white transition-all flex items-center justify-center text-sm sm:text-3xl rounded-xl hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] active:scale-95 py-1 sm:py-2 px-2 sm:px-4 text-center leading-tight">
-                      {opt} <span className="text-[10px] sm:text-lg ml-1 text-slate-400">{question.unit}</span>
+                    <button key={idx} onClick={() => handleAnswer(opt)} className="bg-slate-800/80 hover:bg-cyan-600/40 border border-slate-600 hover:border-cyan-400 font-bold text-white transition-all flex items-center justify-center text-sm sm:text-2xl rounded-xl hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] active:scale-95 py-1.5 sm:py-2 px-2 sm:px-4 text-center leading-tight">
+                      {opt} <span className="text-[10px] sm:text-base ml-1 text-slate-400">{question.unit}</span>
                     </button>
                   ))}
                 </div>
              </div>
           ) : (
-            <div className="h-full flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <div className="flex-1 sm:flex-[1.5] bg-black/40 rounded-2xl border border-white/5 p-2 sm:p-4 relative overflow-hidden flex flex-col shadow-inner min-h-[100px]">
-                 <div className="flex justify-between items-center mb-1 border-b border-white/10 pb-1">
+            <div className="h-full w-full flex flex-col sm:flex-row gap-2 sm:gap-4 overflow-hidden min-h-0">
+              {/* REGISTRO COMBATE */}
+              <div className="flex-1 sm:flex-[1.2] bg-black/40 rounded-2xl border border-white/5 p-2 sm:p-3 relative flex flex-col shadow-inner overflow-hidden min-h-0">
+                 <div className="flex justify-between items-center mb-1 border-b border-white/10 pb-1 shrink-0">
                     <span className="text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">Registro</span>
                     <button onClick={handleOpenJarvis} className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30 text-[9px] sm:text-xs font-bold uppercase tracking-widest transition-all active:scale-95 flex items-center gap-1">
                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> HUD
                     </button>
                  </div>
-                 <div className="flex-1 overflow-y-auto flex flex-col justify-end space-y-0.5">
+                 <div className="flex-1 overflow-y-auto flex flex-col justify-end space-y-0.5 pr-1">
                    {messages.map((msg, i) => (
-                     <div key={i} className={`flex items-start gap-1 sm:gap-2 ${i === messages.length - 1 ? 'text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]' : 'text-slate-500'} text-xs sm:text-xl font-medium tracking-wide`}>
+                     <div key={i} className={`flex items-start gap-1 sm:gap-2 ${i === messages.length - 1 ? 'text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]' : 'text-slate-500'} text-xs sm:text-lg font-medium tracking-wide`}>
                        <p dangerouslySetInnerHTML={{ __html: msg }}></p>
                      </div>
                    ))}
-                   {isPlayerTurn && <p className="font-black text-cyan-400 text-sm sm:text-2xl mt-1 sm:mt-4 animate-pulse">¿ORDEN DE ATAQUE?</p>}
+                   {isPlayerTurn && <p className="font-black text-cyan-400 text-sm sm:text-xl mt-1 sm:mt-2 animate-pulse">¿ORDEN DE ATAQUE?</p>}
                  </div>
               </div>
 
+              {/* CONTROLES */}
               {isPlayerTurn && (
-                <div className="flex-1 flex flex-col gap-1.5 sm:gap-3">
-                  <div className="grid grid-cols-2 gap-1.5 sm:gap-3 flex-1">
+                <div className="w-full sm:w-[45%] flex flex-col gap-1.5 sm:gap-2 overflow-y-auto pr-1 min-h-0 shrink-0 sm:shrink">
+                  <div className="grid grid-cols-2 gap-1.5 sm:gap-2 flex-1 min-h-0">
                     {selectedHero?.attacks.map((attack, index) => {
                       const glowColors = ['hover:border-blue-400 hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] text-blue-300', 'hover:border-purple-400 hover:shadow-[0_0_15px_rgba(192,132,252,0.3)] text-purple-300', 'hover:border-rose-400 hover:shadow-[0_0_15px_rgba(251,113,133,0.3)] text-rose-300'];
                       return (
-                        <button key={index} onClick={() => handleAttackClick(attack.diff, attack.name, attack.dmg)} className={`bg-slate-800/50 border border-slate-700 rounded-xl flex flex-col items-center justify-center p-1 sm:p-2 transition-all active:scale-95 ${glowColors[index]}`}>
-                          <span className="font-bold uppercase text-[10px] sm:text-lg tracking-widest text-center">{attack.name}</span>
+                        <button key={index} onClick={() => handleAttackClick(attack.diff, attack.name, attack.dmg)} className={`bg-slate-800/50 border border-slate-700 rounded-xl flex flex-col items-center justify-center p-1.5 sm:p-2 transition-all active:scale-95 min-h-[40px] sm:min-h-[50px] ${glowColors[index]}`}>
+                          <span className="font-bold uppercase text-[10px] sm:text-sm md:text-base tracking-widest text-center leading-none">{attack.name}</span>
                         </button>
                       )
                     })}
-                    <button onClick={handleHealInit} disabled={playerHp >= maxPlayerHp || consecutiveHeals >= 2} className="bg-slate-800/50 hover:bg-green-900/30 border border-slate-700 hover:border-green-400 hover:shadow-[0_0_15px_rgba(74,222,128,0.3)] text-green-400 rounded-xl flex flex-col items-center justify-center p-1 sm:p-2 transition-all active:scale-95 disabled:opacity-30 disabled:hover:border-slate-700 disabled:active:scale-100">
-                      <span className="font-bold uppercase text-[10px] sm:text-lg tracking-widest text-center">{consecutiveHeals >= 2 ? 'LÍMITE' : 'REGENERAR'}</span>
+                    <button onClick={handleHealInit} disabled={playerHp >= maxPlayerHp || consecutiveHeals >= 2} className="bg-slate-800/50 hover:bg-green-900/30 border border-slate-700 hover:border-green-400 hover:shadow-[0_0_15px_rgba(74,222,128,0.3)] text-green-400 rounded-xl flex flex-col items-center justify-center p-1.5 sm:p-2 transition-all active:scale-95 disabled:opacity-30 disabled:hover:border-slate-700 disabled:active:scale-100 min-h-[40px] sm:min-h-[50px]">
+                      <span className="font-bold uppercase text-[10px] sm:text-sm md:text-base tracking-widest text-center leading-none">{consecutiveHeals >= 2 ? 'LÍMITE' : 'REGENERAR'}</span>
                     </button>
                   </div>
                   {energy >= 100 && (
-                    <button onClick={handleUltimateClick} className="w-full bg-gradient-to-r from-yellow-600 to-yellow-400 hover:from-yellow-500 hover:to-yellow-300 text-black font-black uppercase text-[11px] sm:text-2xl tracking-[0.2em] py-1.5 sm:py-3 rounded-xl shadow-[0_0_20px_rgba(234,179,8,0.4)] active:scale-95 transition-all animate-pulse mt-0.5 sm:mt-0">
+                    <button onClick={handleUltimateClick} className="w-full shrink-0 bg-gradient-to-r from-yellow-600 to-yellow-400 hover:from-yellow-500 hover:to-yellow-300 text-black font-black uppercase text-[11px] sm:text-lg tracking-[0.2em] py-2 rounded-xl shadow-[0_0_20px_rgba(234,179,8,0.4)] active:scale-95 transition-all animate-pulse mt-0.5">
                       HACKEO ATAQUE Z
                     </button>
                   )}
